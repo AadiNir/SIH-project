@@ -1,34 +1,60 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
-
-// Uncomment this line to use console.log
-// import "hardhat/console.sol";
-
-contract Lock {
-    uint public unlockTime;
-    address payable public owner;
-
-    event Withdrawal(uint amount, uint when);
-
-    constructor(uint _unlockTime) payable {
-        require(
-            block.timestamp < _unlockTime,
-            "Unlock time should be in the future"
-        );
-
-        unlockTime = _unlockTime;
-        owner = payable(msg.sender);
+contract agro{
+    address owner;
+    uint256 id = 0;
+    constructor(){
+        owner = msg.sender;
     }
+    struct item{
+        uint256 id;
+        address item_owner;
+        address[] pending_address;
+        uint16 qty;
+        uint256 price;
+        uint256 inflation;
+        string product_name;
+        address[] verified_address;
+        uint256 timestamp;
 
-    function withdraw() public {
-        // Uncomment this line, and the import of "hardhat/console.sol", to print a log in your terminal
-        // console.log("Unlock time is %o and block timestamp is %o", unlockTime, block.timestamp);
-
-        require(block.timestamp >= unlockTime, "You can't withdraw yet");
-        require(msg.sender == owner, "You aren't the owner");
-
-        emit Withdrawal(address(this).balance, block.timestamp);
-
-        owner.transfer(address(this).balance);
     }
+    mapping(uint256 => item) items;
+    function initiate_order(address[] memory pending_addressp,uint16 qtyp,uint256 pricep,uint256 inflationp,string memory product_namep,address[] memory verified_addressp) public{
+        id=id+1;
+        item memory tempitem = item({
+            id:id,
+            item_owner: msg.sender,
+            pending_address:pending_addressp,
+            qty:qtyp,
+            price:pricep,
+            inflation:inflationp,
+            product_name:product_namep,
+            verified_address: verified_addressp,
+            timestamp: block.timestamp
+        });
+        items[id]=tempitem;
+    }
+    function get_order(uint256 idp) external view returns(item memory){
+        require(items[idp].id!=0,"no such order was initated");
+        return items[idp];
+    }
+    
+    function to_verify(address user_address, uint256 idp,uint256 new_inflation) public{
+        require(items[idp].id!=0,"no such order was initated");
+        for(uint256 i=0;i<items[idp].pending_address.length;i++){
+            if(items[idp].pending_address[i]==user_address){
+                delete items[idp].pending_address[i];
+            }
+        }
+        items[idp].inflation = new_inflation;
+
+
+        items[idp].verified_address.push(user_address);
+    }
+    //function add(uint256 idp)public view returns(uint){
+      //  uint256 temp =items[idp].price +(items[idp].price *(items[idp].inflation));
+        //return temp;
+    //}
+
 }
+
