@@ -20,18 +20,16 @@ function App() {
     <div>
       <Navbar />
       <div className='relative'>
-        <div style={{  position: 'relative' ,top: '5px', left: '10px' }}>
-          <h1 className='absolute text-white text-4xl'>
+        <div style={{ top: '10px', left: '2000px' }}>
+          <h1 className='absolute left-[3%] top-[10%] text-white text-4xl'>
             Welcome<br />to <b>AgroChain!</b>
           </h1>
-          </div>
-          <div style={{  position: 'relative' ,top: '90px', left: '10px' }}>
-          <h2 className='absolute text-white text-1xl'>
+          <h2 className='absolute top-[26.5%] left-[3%] text-white text-1xl'>
             Smart Fruit Health Monitoring<br/>and Tracking System
           </h2>
-          </div>
-          
-        
+
+          <button class="absolute bg-blue hover:bg-black-700 text-white-800 font-semibold py-2 px-4 border border-blue-400 rounded-none absolute left-[3%] top-[40%] text-white shawdow">Get Started</button>
+        </div>
 
           <div className='absolute top-[50%] -translate-x-0 translate-y-[50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
             <BsChevronCompactLeft onClick={prevSlide} />
