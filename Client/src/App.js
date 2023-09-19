@@ -21,10 +21,10 @@ function App() {
       <Navbar />
       <div className='relative'>
         <div style={{ top: '10px', left: '2000px' }}>
-          <h1 className='absolute text-white text-4xl'>
+          <h1 className='absolute left-[2.5%] top-[10%] text-white text-4xl'>
             Welcome<br />to <b>AgroChain!</b>
           </h1>
-          <h2 className='fixed text-white text-1xl'>
+          <h2 className='absolute top-[26.5%] left-[2.5%] text-white text-1xl'>
             Smart Fruit Health Monitoring<br/>and Tracking System
           </h2>
         </div>
