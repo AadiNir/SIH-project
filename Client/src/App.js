@@ -5,7 +5,7 @@ import AgroTrucker2 from './AgroTrucker2.jfif';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 
 function App() {
-  const slides = [AgroTrucker, AgroTrucker2];
+  const slides = [AgroTrucker2,AgroTrucker];
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const prevSlide = () => {
