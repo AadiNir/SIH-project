@@ -1,5 +1,6 @@
 import React from 'react';
 import reactDOM from 'react-dom';
+//import BlendModeSlider from "./components/BlendModeSlider/BlendModeSlider";
 
 import App from './App';
 
