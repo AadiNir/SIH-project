@@ -21,12 +21,14 @@ function App() {
       <Navbar />
       <div className='relative'>
         <div style={{ top: '10px', left: '2000px' }}>
-          <h1 className='absolute left-[2.5%] top-[10%] text-white text-4xl'>
+          <h1 className='absolute left-[3%] top-[10%] text-white text-4xl'>
             Welcome<br />to <b>AgroChain!</b>
           </h1>
-          <h2 className='absolute top-[26.5%] left-[2.5%] text-white text-1xl'>
+          <h2 className='absolute top-[26.5%] left-[3%] text-white text-1xl'>
             Smart Fruit Health Monitoring<br/>and Tracking System
           </h2>
+
+          <button class="absolute bg-blue hover:bg-black-700 text-white-800 font-semibold py-2 px-4 border border-blue-400 rounded-none absolute left-[3%] top-[40%] text-white shawdow">Get Started</button>
         </div>
 
           <div className='absolute top-[50%] -translate-x-0 translate-y-[50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
