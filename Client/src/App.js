@@ -20,14 +20,18 @@ function App() {
     <div>
       <Navbar />
       <div className='relative'>
-        <div style={{ top: '10px', left: '2000px' }}>
+        <div style={{  position: 'relative' ,top: '5px', left: '10px' }}>
           <h1 className='absolute text-white text-4xl'>
             Welcome<br />to <b>AgroChain!</b>
           </h1>
-          <h2 className='fixed text-white text-1xl'>
+          </div>
+          <div style={{  position: 'relative' ,top: '90px', left: '10px' }}>
+          <h2 className='absolute text-white text-1xl'>
             Smart Fruit Health Monitoring<br/>and Tracking System
           </h2>
-        </div>
+          </div>
+          
+        
 
           <div className='absolute top-[50%] -translate-x-0 translate-y-[50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
             <BsChevronCompactLeft onClick={prevSlide} />
