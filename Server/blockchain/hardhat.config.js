@@ -4,11 +4,10 @@ require('dotenv').config();
 module.exports = {
   solidity: "0.8.19",
   networks:{
-    mumbai:{
-      url: process.env.API_URL,
-      privatekey:process.env.PRIVATE_KEY
-    
-    }
+    sepolia:{
+      url : process.env.INFURA_API_KEY,
+      accounts:[process.env.SEPOLIA_PRIVATE_KEY]
 
+    }
   }
 };

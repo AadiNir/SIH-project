@@ -3,6 +3,7 @@ const app = express();
 const matlabf = require('./Matlab files/data/matlabData.json');
 const port= 5000;
 
+
 app.get("/api1", (req, res) => {
     try{
         res.json(matlabf);
@@ -12,6 +13,9 @@ app.get("/api1", (req, res) => {
     }
 
 });
+
+app.use('/blockchain',require('./Pages/blockchain'))
+
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'app', 'index.html'));
 });
