@@ -7,7 +7,7 @@ import {abi} from '../agro';
 function Postdetails() {
     const[signeraddress,setsigneraddress]=useState("You haven't logged in yet");
     const[contract,setcontract]=useState();
-    const[pendingadd,setpendingadd]= useState(['']);
+    const[pendingadd,setpendingadd]= useState([]);
     const[quandity,setquanidty]= useState();
     const[price,setprice]= useState();
     const[inflation,setinflation]= useState();
