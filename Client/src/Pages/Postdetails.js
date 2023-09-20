@@ -2,12 +2,15 @@ import React,{useEffect} from 'react'
 import { useState } from 'react';
 import { ethers } from 'ethers';
 import {abi} from '../agro';
-
+import Navbar from '../components/Navbar';
 
 function Postdetails() {
     const[signeraddress,setsigneraddress]=useState("You haven't logged in yet");
     const[contract,setcontract]=useState();
-    const[pendingadd,setpendingadd]= useState([]);
+    const[pendingadd,setpendingadd]= useState('');
+    const[pending,setpending]= useState([]);
+
+
     const[quandity,setquanidty]= useState();
     const[price,setprice]= useState();
     const[inflation,setinflation]= useState();
@@ -37,22 +40,26 @@ function Postdetails() {
     const add= async (e)=>{
       e.preventDefault();
       try{
-        await contract.initiate_order(pendingadd,quandity,price,inflation,prodnam,[]);
+        await contract.initiate_order(pending,quandity,price,inflation,prodnam,[]);
       }catch(err){
         console.log(err);
       }
       }
-    async function get(){
-        const data=await contract.get_order(1);
-        console.log(data.id.toString());
+
+    async function setq(e){
+      e.preventDefault();
+      pending.push(pendingadd);
+      console.log(pending);
 
     }
   
-
   return (
     <div>
+    <Navbar/>
     <form onSubmit={(e)=>add(e)}>
-      <input type='text' placeholder="Enter all of your distribution address in the format ['address1','address2'....]" onChange={e=>{setpendingadd(e.target.value)}}></input><br/>
+      <input type='text' placeholder="Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}}></input><br/>
+      <button onClick={e=>setq(e)}>submit</button><br/>
+
       <input type='number' placeholder='enter the quandity in terms of Kg' onChange={e=>{setquanidty(e.target.value)}}></input><br/>
       <input type='number' placeholder='enter the price in terms of Rs'  onChange={e=>{setprice(e.target.value)}}></input><br/>
       <input type='number' placeholder='enter the inflactuation percentage'  onChange={e=>{setinflation(e.target.value)}}></input><br/>
