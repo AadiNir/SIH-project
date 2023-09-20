@@ -11,8 +11,8 @@ async function main() {
 
   const lock = await hre.ethers.deployContract("agro")
 
-  await lock.waitForDeployment();
-  console.log("The contract has been uploaded to the polygain chain, contract address:",await lock.getAddress());
+  console.log("deployed contract address:",await lock.getAddress());
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
