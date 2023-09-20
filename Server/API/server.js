@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const matlabf = require('./Matlab files/data/matlabData.json');
+const port= 5000;
 
 app.get("/api1", (req, res) => {
     try{
@@ -22,3 +23,4 @@ app.get("/api", (req, res) => {
 app.listen(5000, () => {
     console.log("Server started on port 5000");
 });
+
