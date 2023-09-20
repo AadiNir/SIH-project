@@ -64,6 +64,10 @@ function TimeLine() {
         <input type='number' placeholder="enter the product id" onChange={e=>setsearchid(e.target.value)}/> 
         <button onClick={get}>Search for the product </button>
 
+
+        
+
+
             <h1>Timeline</h1>
             
 <VerticalTimeline>
