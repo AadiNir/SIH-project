@@ -28,7 +28,7 @@ function Postdetails() {
         await provider.send("eth_requestAccounts", []);
 
         const signer =  provider.getSigner();
-        const contractaddress =  '0xE5716b256306c44f63BF9d45d097871A48c9d70A'
+        const contractaddress =  '0x1E522651463375f440C58ED84002a95832E7916b'
         setcontract(new ethers.Contract(contractaddress,abi,signer))
 
 
