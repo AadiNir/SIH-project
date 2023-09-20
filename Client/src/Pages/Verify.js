@@ -9,7 +9,7 @@ function Verify() {
     const[pendingaddress,setpendingadd]=useState("");
     const[userid,setuserid]=useState();
     const[inflation,setinflation]=useState();
-    const[bool,setbool]=useState(true);
+    const[bool,setbool]=useState(false);
     useEffect(()=>{
         inContract();
     })
