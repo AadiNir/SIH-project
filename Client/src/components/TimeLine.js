@@ -5,7 +5,7 @@ import AgricultureIcon from '@mui/icons-material/Agriculture';
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import { abi } from '../agro';
-//import '.. /Styles/time.css'
+import Modal from './Modal'
 
 function TimeLine() {
   const [signeraddress, setsigneraddress] = useState("You haven't logged in yet");
@@ -20,6 +20,7 @@ function TimeLine() {
   const [inflation, setinflation] = useState();
   const [prodname, setprodname] = useState('');
   const [verifiedaddress, setverifiedaddress] = useState([]);
+  const [bool, setbool] = useState(false);
 
   useEffect(() => {
     iscontract();
