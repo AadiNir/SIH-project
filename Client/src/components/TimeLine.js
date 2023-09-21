@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { ethers } from 'ethers';
 import {abi} from '../agro';
 
-
 function TimeLine() {
   const[signeraddress,setsigneraddress]=useState("You haven't logged in yet");
   const[contract,setcontract]=useState();
@@ -21,6 +20,8 @@ function TimeLine() {
   const[inflation,setinflation]=useState();
   const[prodname,setprodname]=useState();
   const[verifiedaddress,setverifiedaddress]=useState([]);
+
+  const TotElement = pendingaddress.length + verifiedaddress.length;
 
   useEffect(()=>{
 
@@ -58,7 +59,7 @@ function TimeLine() {
     }
 
 }
-
+D
     return (
         <div>
         <input type='number' placeholder="enter the product id" onChange={e=>setsearchid(e.target.value)}/> 
@@ -68,11 +69,12 @@ function TimeLine() {
         
 
 
-            <h1>Timeline</h1>
+            <h1>Timeline {prodname}</h1>
             
 <VerticalTimeline>
   <VerticalTimelineElement
     className="vertical-timeline-element--work"
+
     date="2011 - present"
     iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
     icon={<AgricultureIcon />}
@@ -83,7 +85,6 @@ function TimeLine() {
       Paddy
     </p>
   </VerticalTimelineElement>
-
   <VerticalTimelineElement
     className="vertical-timeline-element--work"
     date="2010 - 2011"
