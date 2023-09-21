@@ -73,7 +73,7 @@ function Postdetails() {
     <form onSubmit={(e)=>add(e)} className='form1'>
     <input className='input-box' type='text' placeholder="Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}} ></input>
     <button   className='btn1' onClick={e=>setq(e)}>+</button>
-    <input className='input-box' type='text' placeholder="Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}} ></input><br/><br/>
+    <br/><br/>
        
      
 
