@@ -32,7 +32,7 @@ function TimeLine() {
       await provider.send('eth_requestAccounts', []);
 
       const signer = provider.getSigner();
-      const contractaddress = '0x1E522651463375f440C58ED84002a95832E7916b';
+      const contractaddress = '0xe01003eC9147Af717DAd7283f9918FCC3377E70B';
       setcontract(new ethers.Contract(contractaddress, abi, signer));
 
       setsigneraddress(signer.address);
@@ -53,6 +53,7 @@ function TimeLine() {
       setverifiedaddress(data.verified_address);
     } catch (err) {
       console.log(err);
+      setbool(true);
     }
   }
 
