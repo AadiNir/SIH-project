@@ -56,7 +56,6 @@ function TimeLine() {
       setbool(true);
     }
   }
-
   return (
     <div class='h-screen'>
       <input type="number" placeholder="enter the product id" onChange={e => setsearchid(e.target.value)} />
