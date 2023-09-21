@@ -71,9 +71,9 @@ function Postdetails() {
     <div>
     <Navbar/>
     <form onSubmit={(e)=>add(e)} className='form1'>
-    <input className='input-box' type='text' placeholder="                Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}}></input><br/>
+    <input className='input-box' type='text' placeholder="               Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}}></input><br/>
     <input className='input-box' type='text' placeholder='                                  Enter the PlaceName'  onChange={e=>{setplaces(e.target.value)}}></input><br/>
-
+    
        <button   className='btn' onClick={e=>setq(e)}>submit</button><br/>
      
 
