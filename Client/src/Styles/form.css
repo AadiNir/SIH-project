@@ -9,9 +9,9 @@
     flex-direction: column;
     
     background-color: #182E7A;
-    margin-top: 200px;
-    margin-left: 600px;
-    margin-right: 600px;
+    margin-top: 100px;
+    margin-left: 400px;
+    margin-right: 400px;
     
 
     border-radius: 20px;
@@ -25,27 +25,29 @@
 
  .input-box{
     width: 500px;
-    height: 50px;
+    height: 40px;
     border: 2px solid #041a57 ;
     border-radius: 15px;
     box-shadow:7.5px 6px 2px  rgba(0, 0, 0, .5);
 }
 body{
     background-color: #041a57;
-    background: url('./form1.jpg') ;
+    background: url('./form_pat.jpg')   ;
     
 }
 
 .btn{
     width: 170px;
     height: 45px;
-    background: white;
+    background: #00144d;
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
     font-size: 18px;
     font-weight: 600;
-    border: 2px solid #041a57 ;
+    border: 2px solid #000000 ;
+    color: white;
+
 
 
 }
