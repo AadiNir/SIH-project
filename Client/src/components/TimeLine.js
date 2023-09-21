@@ -53,7 +53,6 @@ function TimeLine() {
     setinflation(data.inflation.toString());
     setprodname(data.product_name);
     setverifiedaddress(data.verified_address);
-    console.log(data.qty);
     }catch(err){
       console.log(err);
     }
@@ -63,7 +62,7 @@ function TimeLine() {
 const timelineData = [
     {
         date: "21st September 2023",
-        title: "Chennai Farmer",
+        title: prodname,
         location: "VIT Chennai",
         description: "Paddy",
       },
@@ -118,9 +117,8 @@ const timelineData = [
         <div>
       <input type='number' placeholder="enter the product id" onChange={e => setsearchid(e.target.value)} />
       <button onClick={get}>Search for the product </button>
-      {pendingaddress}
-
-      <h1>Timeline {prodname}</h1>
+      {prodname}
+      <h1>Timeline</h1>
 
       <VerticalTimeline>
         {timelineElements}
