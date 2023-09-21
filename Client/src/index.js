@@ -10,6 +10,7 @@ import {
     createBrowserRouter,
     RouterProvider,
   } from "react-router-dom";
+import Verify from './Pages/Verify';
 
   const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ import {
       {
         path:"Login",
         element:<Postdetails/>
+      },
+      {
+        path:"Verify",
+        element:<Verify/>
       }
 
 
