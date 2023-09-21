@@ -41,7 +41,7 @@ function Navbar() {
                 <a href="/#">About us</a>
                 {/* <a href="/Services">Services</a> */}
                 <Link to = "/Services">Services</Link>
-                <Link to = "/Login">Login</Link>
+                <Link to = "/Login">Details</Link>
                 <Link to = "/Verify">Verify</Link>
 
 
