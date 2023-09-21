@@ -18,7 +18,7 @@ function Verify() {
         const provider =  new ethers.providers.Web3Provider(window.ethereum);
         await provider.send("eth_requestAccounts", []);
 
-        const contract_address= '0x1E522651463375f440C58ED84002a95832E7916b';
+        const contract_address= '0xe01003eC9147Af717DAd7283f9918FCC3377E70B';
         const signer =  provider.getSigner();
         const contract = new ethers.Contract(contract_address,abi,signer);
         setcontractadd(contract);
@@ -46,7 +46,7 @@ function Verify() {
         <input onChange={e=>setpendingadd(e.target.value)} placeholder='Enter the id of the product'/>
         <input onChange={e=>setuserid(e.target.value)} placeholder='Enter any inflation rate'/>
         <button onClick={e=>toverify(e)}>click here to verify</button>
-        <Modal open={bool} onclose={()=>setbool(false)} value={'You have successfully verified'}/>
+        <Modal open={bool} onclose={()=>setbool(false)} value={'You have successfully verified, Go to timeline page for more information'}/>
 
         
 

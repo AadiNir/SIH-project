@@ -31,6 +31,11 @@
           "internalType": "address[]",
           "name": "verified_addressp",
           "type": "address[]"
+        },
+        {
+          "internalType": "string[]",
+          "name": "placep",
+          "type": "string[]"
         }
       ],
       "name": "initiate_order",
@@ -94,6 +99,11 @@
               "type": "address[]"
             },
             {
+              "internalType": "string[]",
+              "name": "places",
+              "type": "string[]"
+            },
+            {
               "internalType": "uint16",
               "name": "qty",
               "type": "uint16"
@@ -127,6 +137,19 @@
           "internalType": "struct agro.item",
           "name": "",
           "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getid",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",

@@ -6,11 +6,13 @@ import {useEffect} from 'react'
 import { useState } from 'react';
 import { ethers } from 'ethers';
 import {abi} from '../agro';
+import Modal from "./Modal";
 
 function TimeLine() {
   const[signeraddress,setsigneraddress]=useState("You haven't logged in yet");
   const[contract,setcontract]=useState();
   const[searchid,setsearchid]=useState();
+  const[bool,setbool]=useState(false);
 
   //variable initilization
   const[owner,setowner]=useState('');
@@ -34,7 +36,7 @@ function TimeLine() {
       await provider.send("eth_requestAccounts", []);
 
       const signer =  provider.getSigner();
-      const contractaddress =  '0x1E522651463375f440C58ED84002a95832E7916b'
+      const contractaddress =  '0xe01003eC9147Af717DAd7283f9918FCC3377E70B'
       setcontract(new ethers.Contract(contractaddress,abi,signer))
 
 
@@ -54,7 +56,7 @@ function TimeLine() {
     setprodname(data.product_name);
     setverifiedaddress(data.verified_address);
     }catch(err){
-      console.log(err);
+      setbool(true);
     }
 
 }
@@ -100,6 +102,7 @@ const timelineData = [
   ];
 
   const timelineElements = timelineData.map((data, index) => (
+
     <VerticalTimelineElement
       key={index}
       className="vertical-timeline-element--work"
@@ -115,6 +118,7 @@ const timelineData = [
 
     return (
         <div>
+        {pendingaddress}
       <input type='number' placeholder="enter the product id" onChange={e => setsearchid(e.target.value)} />
       <button onClick={get}>Search for the product </button>
       {prodname}
@@ -123,6 +127,8 @@ const timelineData = [
       <VerticalTimeline>
         {timelineElements}
       </VerticalTimeline>
+      <Modal open={bool} onclose={()=>setbool(false)} value={"No Such order has been initiated yet, Try again"}/>
+
     </div>
         
     )
