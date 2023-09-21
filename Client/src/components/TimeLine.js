@@ -2,6 +2,10 @@ import React from "react"
 import {VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import AgricultureIcon from '@mui/icons-material/Agriculture';
+import {useEffect} from 'react'
+import { useState } from 'react';
+import { ethers } from 'ethers';
+import {abi} from '../agro';
 
 function TimeLine() {
   const[signeraddress,setsigneraddress]=useState("You haven't logged in yet");
@@ -16,6 +20,8 @@ function TimeLine() {
   const[inflation,setinflation]=useState();
   const[prodname,setprodname]=useState();
   const[verifiedaddress,setverifiedaddress]=useState([]);
+
+  const TotElement = pendingaddress.length + verifiedaddress.length;
 
   useEffect(()=>{
 
@@ -53,7 +59,7 @@ function TimeLine() {
     }
 
 }
-
+D
     return (
         <div>
         <input type='number' placeholder="enter the product id" onChange={e=>setsearchid(e.target.value)}/> 
@@ -63,7 +69,7 @@ function TimeLine() {
         
 
 
-            <h1>Timeline</h1>
+            <h1>Timeline {prodname}</h1>
             
 <VerticalTimeline>
   <VerticalTimelineElement
