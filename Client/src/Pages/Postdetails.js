@@ -32,6 +32,7 @@ function Postdetails() {
         const signer =  provider.getSigner();
         const contractaddress =  '0x1E522651463375f440C58ED84002a95832E7916b'
         setcontract(new ethers.Contract(contractaddress,abi,signer))
+        console.log(prodnam)
 
 
         setsigneraddress(signer.address);

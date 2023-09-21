@@ -53,93 +53,79 @@ function TimeLine() {
     setinflation(data.inflation.toString());
     setprodname(data.product_name);
     setverifiedaddress(data.verified_address);
-
+    console.log(data.qty);
     }catch(err){
       console.log(err);
     }
 
 }
-D
+
+const timelineData = [
+    {
+        date: "21st September 2023",
+        title: "Chennai Farmer",
+        location: "VIT Chennai",
+        description: "Paddy",
+      },
+
+    {
+      date: "2011 - present",
+      title: "Farmer 1",
+      location: "Madurai, Tamilnadu",
+      description: "Paddy",
+    },
+    {
+      date: "2010 - 2011",
+      title: "APMC",
+      location: "Chennai, India",
+      description: "Paddy, Tomato, Wheat",
+    },
+    {
+      date: "2008 - 2010",
+      title: "Distributor",
+      location: "Jabalpur, MP",
+      description: "Paddy, Tomato, Wheat",
+    },
+    {
+      date: "2006 - 2008",
+      title: "Wholeseller",
+      location: "Surat, Gujarat",
+      description: "Paddy, Tomato, Wheat, Barley, Maize",
+    },
+    {
+      date: "April 2013",
+      title: "Delhi Market Retailer",
+      location: "Chandini Chowk, Delhi",
+      description: "Paddy",
+    },
+  ];
+
+  const timelineElements = timelineData.map((data, index) => (
+    <VerticalTimelineElement
+      key={index}
+      className="vertical-timeline-element--work"
+      date={data.date}
+      iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+      icon={<AgricultureIcon />}
+    >
+      <h3 className="vertical-timeline-element-title">{data.title}</h3>
+      <h4 className="vertical-timeline-element-subtitle">{data.location}</h4>
+      <p>{data.description}</p>
+    </VerticalTimelineElement>
+  ));
+
     return (
         <div>
-        <input type='number' placeholder="enter the product id" onChange={e=>setsearchid(e.target.value)}/> 
-        <button onClick={get}>Search for the product </button>
-        {pendingaddress}
+      <input type='number' placeholder="enter the product id" onChange={e => setsearchid(e.target.value)} />
+      <button onClick={get}>Search for the product </button>
+      {pendingaddress}
 
-        
+      <h1>Timeline {prodname}</h1>
 
-
-            <h1>Timeline {prodname}</h1>
-            
-<VerticalTimeline>
-  <VerticalTimelineElement
-    className="vertical-timeline-element--work"
-
-    date="2011 - present"
-    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-    icon={<AgricultureIcon />}
-  >
-    <h3 className="vertical-timeline-element-title">Farmer 1</h3>
-    <h4 className="vertical-timeline-element-subtitle">Madurai, Tamilnadu</h4>
-    <p>
-      Paddy
-    </p>
-  </VerticalTimelineElement>
-  <VerticalTimelineElement
-    className="vertical-timeline-element--work"
-    date="2010 - 2011"
-    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-    icon={<AgricultureIcon />}
-  >
-    <h3 className="vertical-timeline-element-title">APMC</h3>
-    <h4 className="vertical-timeline-element-subtitle">Chennai,India</h4>
-    <p>
-      Paddy,Tomato,Wheat
-    </p>
-  </VerticalTimelineElement>
-  <VerticalTimelineElement
-    className="vertical-timeline-element--work"
-    date="2008 - 2010"
-    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-    icon={<AgricultureIcon />}
-  >
-    <h3 className="vertical-timeline-element-title">Distributor</h3>
-    <h4 className="vertical-timeline-element-subtitle">Jabalpur,MP</h4>
-    <p>
-        Paddy,Tomato,Wheat
-    </p>
-  </VerticalTimelineElement>
-  <VerticalTimelineElement
-    className="vertical-timeline-element--work"
-    date="2006 - 2008"
-    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-    icon={<AgricultureIcon />}
-  >
-    <h3 className="vertical-timeline-element-title">Wholeseller</h3>
-    <h4 className="vertical-timeline-element-subtitle">Surat,Gujarat</h4>
-    <p>
-        Paddy,Tomato,Wheat,Barley,Maize
-    </p>
-  </VerticalTimelineElement>
-  <VerticalTimelineElement
-    className="vertical-timeline-element--education"
-    date="April 2013"
-    iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-    icon={<AgricultureIcon />}
-  >
-    <h3 className="vertical-timeline-element-title">Delhi Market Retailer</h3>
-    <h4 className="vertical-timeline-element-subtitle">Paddy</h4>
-    <p>
-      Chandini Chowk,Delhi
-    </p>
-  </VerticalTimelineElement>
-  
-  <VerticalTimelineElement
-    iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-    icon={<AgricultureIcon />}
-  />
-</VerticalTimeline>
-        </div>
+      <VerticalTimeline>
+        {timelineElements}
+      </VerticalTimeline>
+    </div>
         
     )
 }
