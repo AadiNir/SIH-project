@@ -21,6 +21,7 @@ function TimeLine() {
   const [prodname, setprodname] = useState('');
   const [verifiedaddress, setverifiedaddress] = useState([]);
   const [bool, setbool] = useState(false);
+  const[namearr,setnamearr]=useState([]);
 
   useEffect(() => {
     iscontract();
@@ -32,7 +33,7 @@ function TimeLine() {
       await provider.send('eth_requestAccounts', []);
 
       const signer = provider.getSigner();
-      const contractaddress = '0xe01003eC9147Af717DAd7283f9918FCC3377E70B';
+      const contractaddress = '0xcD74a47d2c2Ae78047587f45C9a2597c25Ba34b2';
       setcontract(new ethers.Contract(contractaddress, abi, signer));
 
       setsigneraddress(signer.address);
@@ -51,13 +52,14 @@ function TimeLine() {
       setinflation(data.inflation.toString());
       setprodname(data.product_name);
       setverifiedaddress(data.verified_address);
+      setnamearr(data.names);
     } catch (err) {
       console.log(err);
       setbool(true);
     }
   }
   return (
-    <div class='h-screen'>
+    <div>
       <input type="number" placeholder="enter the product id" onChange={e => setsearchid(e.target.value)} />
       <button onClick={get}>Search for the product</button>
 
@@ -76,6 +78,8 @@ function TimeLine() {
             icon={<AgricultureIcon />}
           >
             <h4 className="vertical-timeline-element-subtitle">ID: {pendingaddress[index]}</h4>
+            <h4 className="vertical-timeline-element-subtitle">NAME: {namearr[index]}</h4>
+
             <h4 className="vertical-timeline-element-subtitle">Price: {price} rs</h4>
             <h4 className="vertical-timeline-element-subtitle">Inflation: {inflation}%</h4>
           </VerticalTimelineElement>
@@ -83,6 +87,7 @@ function TimeLine() {
       </VerticalTimeline>
       <Modal open={bool} onclose={()=>setbool(false)} value={"No Such order has been initiated yet, Try again"}/>
 
+    </div>
     </div>
   );
 }

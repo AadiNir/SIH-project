@@ -38,7 +38,10 @@ body{
     background: url('./form5.jpg')   ;
     
 }
-
+.timeline{
+    height: max-content;
+    background-image: url('../components/pxfuel.jpg')
+}
 .btn{
     width: 300px;
     height: 45px;

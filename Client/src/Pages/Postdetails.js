@@ -15,7 +15,8 @@ function Postdetails() {
     const[places,setplaces]= useState('');
     const[placesarray,setplacesarray]= useState([]);
     const[itemid,setid]=useState();
-
+    const[name,setname]=useState();
+    const[namearr,setnamearr]=useState([]);
 
 
 
@@ -36,7 +37,7 @@ function Postdetails() {
         await provider.send("eth_requestAccounts", []);
 
         const signer =  provider.getSigner();
-        const contractaddress =  '0xe01003eC9147Af717DAd7283f9918FCC3377E70B'
+        const contractaddress =  '0xcD74a47d2c2Ae78047587f45C9a2597c25Ba34b2'
         setcontract(new ethers.Contract(contractaddress,abi,signer))
         console.log(prodnam)
 
@@ -49,7 +50,7 @@ function Postdetails() {
     const add= async (e)=>{
       e.preventDefault();
       try{
-        await contract.initiate_order(pending,quandity,price,inflation,prodnam,[],placesarray);
+        await contract.initiate_order(pending,quandity,price,inflation,prodnam,[],placesarray,namearr);
         setid(await contract.getid());
         setbool(true);
       }catch(err){
@@ -61,8 +62,10 @@ function Postdetails() {
       e.preventDefault();
       pending.push(pendingadd);
       placesarray.push(places);
+      namearr.push(name);
       console.log(pending);
       console.log(placesarray);
+      console.log(namearr);
 
 
     }
@@ -71,9 +74,12 @@ function Postdetails() {
     <div>
     <Navbar/>
     <form onSubmit={(e)=>add(e)} className='form1'>
-    <input className='input-box' type='text' placeholder="Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}}></input>
-    <button   className='btn1' onClick={e=>setq(e)}>+</button>
+    <input className='input-box' type='text' placeholder="Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}}></input><br/>
     <input className='input-box' type='text' placeholder='Enter the PlaceName'  onChange={e=>{setplaces(e.target.value)}}></input><br/>
+    <input className='input-box' type='text' placeholder='Enter the Name of the vendor'  onChange={e=>{setname(e.target.value)}}></input>
+    <button   className='btn1' onClick={e=>setq(e)}>+</button>
+
+
 
        
      
