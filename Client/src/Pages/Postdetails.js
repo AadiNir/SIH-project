@@ -4,7 +4,8 @@ import { ethers } from 'ethers';
 import {abi} from '../agro';
 import Navbar from '../components/Navbar';
 import Modal from '../components/Modal';
-
+import '../Styles/form.css';
+import "../Styles/form.jpg";
 
 function Postdetails() {
     const[signeraddress,setsigneraddress]=useState("You haven't logged in yet");
@@ -60,16 +61,18 @@ function Postdetails() {
   return (
     <div>
     <Navbar/>
-    <form onSubmit={(e)=>add(e)}>
-      <input type='text' placeholder="Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}}></input><br/>
-      <button onClick={e=>setq(e)}>submit</button><br/>
+    <form onSubmit={(e)=>add(e)} className='form1'>
+    <input className='input-box' type='text' placeholder="                Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}}></input><br/>
+       <button   className='btn' onClick={e=>setq(e)}>submit</button><br/>
+     
 
-      <input type='number' placeholder='enter the quandity in terms of Kg' onChange={e=>{setquanidty(e.target.value)}}></input><br/>
-      <input type='number' placeholder='enter the price in terms of Rs'  onChange={e=>{setprice(e.target.value)}}></input><br/>
-      <input type='number' placeholder='enter the inflactuation percentage'  onChange={e=>{setinflation(e.target.value)}}></input><br/>
-      <input type='text' placeholder='enter the Product Name'  onChange={e=>{setprodname(e.target.value)}}></input><br/>
+      <input className='input-box' type='number' placeholder='                              Enter the quantity in terms of Kg' onChange={e=>{setquanidty(e.target.value)}}></input><br/>
+      
+      <input className='input-box' type='number' placeholder='                              Enter the price in terms of Rs'  onChange={e=>{setprice(e.target.value)}}></input><br/>
+      <input  className='input-box' type='number' placeholder='                             Enter the inflactuation percentage'  onChange={e=>{setinflation(e.target.value)}}></input><br/>
+      <input className='input-box' type='text' placeholder='                                  Enter the Product Name'  onChange={e=>{setprodname(e.target.value)}}></input><br/>
 
-      <button  type="submit">submit contract</button>
+      <button  className='btn' type="submit">submit contract</button>
       <Modal open={bool} onclose={()=>setbool(false)} value={'You have successfully started the chain'}/>
 
       </form>
