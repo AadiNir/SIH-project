@@ -12,6 +12,11 @@ function Postdetails() {
     const[contract,setcontract]=useState();
     const[pendingadd,setpendingadd]= useState('');
     const[pending,setpending]= useState([]);
+    const[places,setplaces]= useState('');
+    const[placesarray,setplacesarray]= useState([]);
+    const[itemid,setid]=useState();
+
+
 
 
     const[quandity,setquanidty]= useState();
@@ -19,7 +24,7 @@ function Postdetails() {
     const[inflation,setinflation]= useState();
     const[prodnam,setprodname]= useState('');
 
-    const[bool,setbool]=useState(true);
+    const[bool,setbool]=useState(false);
 
     useEffect(()=>{
 
@@ -31,7 +36,7 @@ function Postdetails() {
         await provider.send("eth_requestAccounts", []);
 
         const signer =  provider.getSigner();
-        const contractaddress =  '0x1E522651463375f440C58ED84002a95832E7916b'
+        const contractaddress =  '0xe01003eC9147Af717DAd7283f9918FCC3377E70B'
         setcontract(new ethers.Contract(contractaddress,abi,signer))
         console.log(prodnam)
 
@@ -44,7 +49,8 @@ function Postdetails() {
     const add= async (e)=>{
       e.preventDefault();
       try{
-        await contract.initiate_order(pending,quandity,price,inflation,prodnam,[]);
+        await contract.initiate_order(pending,quandity,price,inflation,prodnam,[],placesarray);
+        setid(await contract.getid());
         setbool(true);
       }catch(err){
         console.log(err);
@@ -54,7 +60,10 @@ function Postdetails() {
     async function setq(e){
       e.preventDefault();
       pending.push(pendingadd);
+      placesarray.push(places);
       console.log(pending);
+      console.log(placesarray);
+
 
     }
   
@@ -63,6 +72,8 @@ function Postdetails() {
     <Navbar/>
     <form onSubmit={(e)=>add(e)} className='form1'>
     <input className='input-box' type='text' placeholder="                Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}}></input><br/>
+    <input className='input-box' type='text' placeholder='                                  Enter the PlaceName'  onChange={e=>{setplaces(e.target.value)}}></input><br/>
+
        <button   className='btn' onClick={e=>setq(e)}>submit</button><br/>
      
 
@@ -72,8 +83,9 @@ function Postdetails() {
       <input  className='input-box' type='number' placeholder='                             Enter the inflactuation percentage'  onChange={e=>{setinflation(e.target.value)}}></input><br/>
       <input className='input-box' type='text' placeholder='                                  Enter the Product Name'  onChange={e=>{setprodname(e.target.value)}}></input><br/>
 
+
       <button  className='btn' type="submit">submit contract</button>
-      <Modal open={bool} onclose={()=>setbool(false)} value={'You have successfully started the chain'}/>
+      <Modal open={bool} onclose={()=>setbool(false)} value={`You have successfully started the chain, your productId is ${itemid}`}/>
 
       </form>
       
