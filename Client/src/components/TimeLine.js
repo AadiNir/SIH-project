@@ -58,7 +58,7 @@ function TimeLine() {
   }
 
   return (
-    <div>
+    <div class='h-screen'>
       <input type="number" placeholder="enter the product id" onChange={e => setsearchid(e.target.value)} />
       <button onClick={get}>Search for the product</button>
 
