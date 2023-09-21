@@ -18,7 +18,7 @@ function Postdetails() {
     const[inflation,setinflation]= useState();
     const[prodnam,setprodname]= useState('');
 
-    const[bool,setbool]=useState(false);
+    const[bool,setbool]=useState(true);
 
     useEffect(()=>{
 
