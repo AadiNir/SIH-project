@@ -88,7 +88,7 @@ function TimeLine() {
       <Modal open={bool} onclose={()=>setbool(false)} value={"No Such order has been initiated yet, Try again"}/>
 
     </div>
-    </div>
+    
   );
 }
 
