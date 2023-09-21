@@ -36,6 +36,11 @@
           "internalType": "string[]",
           "name": "placep",
           "type": "string[]"
+        },
+        {
+          "internalType": "string[]",
+          "name": "namep",
+          "type": "string[]"
         }
       ],
       "name": "initiate_order",
@@ -97,6 +102,11 @@
               "internalType": "address[]",
               "name": "pending_address",
               "type": "address[]"
+            },
+            {
+              "internalType": "string[]",
+              "name": "names",
+              "type": "string[]"
             },
             {
               "internalType": "string[]",
