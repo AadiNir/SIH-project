@@ -14,7 +14,6 @@ function Services(){
         <div style = {pageStyle}>
             <Navbar></Navbar>
             <TimeLine></TimeLine>
-            <div><h1>Services Page</h1></div>
         </div>
     )
 }
