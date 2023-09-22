@@ -4,7 +4,7 @@ import { ethers} from 'ethers'
 import {abi} from '../agro'
 import Modal from '../components/Modal'
 import '../Styles/verify.css';
-
+import bigInt from "big-integer";
 
 function Verify() {
     const[contractadd,setcontractadd]=useState();
@@ -21,7 +21,7 @@ function Verify() {
         const provider =  new ethers.providers.Web3Provider(window.ethereum);
         await provider.send("eth_requestAccounts", []);
 
-        const contract_address= '0xcD74a47d2c2Ae78047587f45C9a2597c25Ba34b2';
+        const contract_address= '0x9f14C0F90cF75bF93B682913e64F40Ae9B2d3d85';
         const signer =  provider.getSigner();
         const contract = new ethers.Contract(contract_address,abi,signer);
         setcontractadd(contract);
@@ -34,22 +34,20 @@ function Verify() {
     async function toverify(e){
         e.preventDefault();
         try{
-
-
-        await contractadd.to_verify(pendingaddress,userid,10);
-        setbool(true);
+            const data = await contractadd.get_order(userid);
+            let org = data.price
+            const ind = await contractadd.get_index(pendingaddress,userid);
+            let inf = data.inflation[ind];
+            let newprice = Math.round(org + (inf*org/100));
+            await contractadd.to_verify(pendingaddress,userid,newprice);
+            setbool(true);
         }
 
         catch(err){
             console.log(err);
         }
     }
-    // async function hola(){
-    // const data = await contractadd.get_order(1002);
-    // data.price()
-    
-    // }
-    // hola();
+
 
   return (
     
