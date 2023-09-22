@@ -1,30 +1,41 @@
 const express = require('express');
+const fs = require('fs');
 const app = express();
-const matlabf = require('./Matlab files/data/matlabData.json');
-const port= 5000;
+const port = 5000;
 
+let matlabData = null;
 
-app.get("/api1", (req, res) => {
-    try{
-        res.json(matlabf);
-    }
-    catch(err){
-        console.log(err);
-    }
+// Initial read of the JSON file
+function readJSONFile() {
+  try {
+    const data = fs.readFileSync('Matlab files/data/matlabData.json', 'utf8');
+    matlabData = JSON.parse(data);
+  } catch (err) {
+    console.error('Error reading JSON file:', err);
+  }
+}
 
+// Watch for changes to the JSON file
+fs.watch('Matlab files/data/matlabData.json', (event, filename) => {
+  if (event === 'change') {
+    console.log('File changed:', filename);
+    readJSONFile();
+  }
 });
 
-app.use('/blockchain',require('./Pages/blockchain'))
-
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'app', 'index.html'));
+// Serve the JSON data via an API endpoint
+app.get('/api1', (req, res) => {
+  if (matlabData !== null) {
+    res.json(matlabData);
+  } else {
+    res.status(500).json({ error: 'Unable to fetch data.' });
+  }
 });
 
-app.get("/api", (req, res) => {
-    res.json({"users":["user1","user2","user3", "server9"]});
+// Start the Express server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
-app.listen(5000, () => {
-    console.log("Server started on port 5000");
-});
-
+// Read the JSON file on startup
+readJSONFile();

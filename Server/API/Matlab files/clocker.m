@@ -24,6 +24,7 @@ while y == 0
     
     % Write the JSON data to the file
     fwrite(fid, json, 'char');
+    pause(5);
     
     % Close the file
     fclose(fid);

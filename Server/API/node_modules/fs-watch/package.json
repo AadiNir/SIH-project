@@ -1,0 +1,19 @@
+{
+  "name": "fs-watch",
+  "version": "0.0.1",
+  "description": "修复各个平台中的fs.watch的限制",
+  "keywords": [ "fs", "watch"],
+  "author": "jifeng (wade428@163.com)",
+  "scripts": {
+    "test": "make test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": "*",
+    "jscover": "*"
+  },
+  "main": "index.js",
+  "engines": { "node": "0.8.x" }
+}
