@@ -22,6 +22,9 @@ function TimeLine() {
   const [verifiedaddress, setverifiedaddress] = useState([]);
   const [bool, setbool] = useState(false);
   const[namearr,setnamearr]=useState([]);
+  const[placearr,setplacearr]  = useState([]);
+
+
 
   useEffect(() => {
     iscontract();
@@ -53,11 +56,14 @@ function TimeLine() {
       setprodname(data.product_name);
       setverifiedaddress(data.verified_address);
       setnamearr(data.names);
+      setplacearr(data.places)
     } catch (err) {
       console.log(err);
       setbool(true);
     }
   }
+
+
   return (
     <div className="timeline">
     {console.log(namearr)}
@@ -70,6 +76,8 @@ function TimeLine() {
       <button onClick={get} class="text-white  items-center h-12  w-44 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search for the product</button>
     </div>
       <h1 class="flex items-center justify-center py-5 font-mono text-orange-50 font-bold text-xl">Timeline of {prodname}</h1>
+
+
       <h1 class="flex items-center justify-center py-5 font-mono text-orange-50 font-bold text-xl	">Owner: {owner}</h1>
  
       
@@ -86,7 +94,9 @@ function TimeLine() {
             icon={<AgricultureIcon />}
           >
             <h4 className="vertical-timeline-element-subtitle">ID: {pendingaddress[index]}</h4>
-            <h4 className="vertical-timeline-element-subtitle">NAME: {namearr[index]}</h4>
+            <h4 className="vertical-timeline-element-subtitle">Name: {namearr[index]}</h4>
+            <h4 className="vertical-timeline-element-subtitle">Place: {placearr[index]}</h4>
+
 
             <h4 className="vertical-timeline-element-subtitle">Price: {price} rs</h4>
             <h4 className="vertical-timeline-element-subtitle">Inflation: {inflation}%</h4>
