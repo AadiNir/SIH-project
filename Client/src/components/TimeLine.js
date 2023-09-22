@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import { abi } from '../agro';
 import Modal from './Modal'
+import Modal2 from './Modal2';
 
 function TimeLine() {
   const [signeraddress, setsigneraddress] = useState("You haven't logged in yet");
@@ -23,6 +24,7 @@ function TimeLine() {
   const [bool, setbool] = useState(false);
   const[namearr,setnamearr]=useState([]);
   const[placearr,setplacearr]  = useState([]);
+  const [bool2, setbool2] = useState(false);
 
 
 
@@ -83,16 +85,20 @@ function TimeLine() {
       
 
       <VerticalTimeline>
+      
         {pendingaddress.map((data, index) => (
           <VerticalTimelineElement
             key={index}
             className="vertical-timeline-element--work"
-            date={data.date}
+            date= <button onClick={()=>setbool2(true)} class="text-white  items-center h-12  w-44 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Real-time health of fruits</button>
             quantity={qty}
             
             iconStyle={{ background: pendingaddress[index] === '0x0000000000000000000000000000000000000000' ? 'green' : 'red', color: '#fff' }}
+            
             icon={<AgricultureIcon />}
+            
           >
+        
             <h4 className="vertical-timeline-element-subtitle">ID: {pendingaddress[index]}</h4>
             <h4 className="vertical-timeline-element-subtitle">Name: {namearr[index]}</h4>
             <h4 className="vertical-timeline-element-subtitle">Place: {placearr[index]}</h4>
@@ -100,10 +106,16 @@ function TimeLine() {
 
             <h4 className="vertical-timeline-element-subtitle">Price: {price} rs</h4>
             <h4 className="vertical-timeline-element-subtitle">Inflation: {inflation}%</h4>
+            
           </VerticalTimelineElement>
+          
         ))}
+        
       </VerticalTimeline>
+      
       <Modal open={bool} onclose={()=>setbool(false)} value={"No Such order has been initiated yet, Try again"}/>
+      <Modal2 open={bool2} onclose={()=>setbool2(false)} value={"Hello"} Temp={"Ayo"}/>
+
 
     </div>
     </div>
