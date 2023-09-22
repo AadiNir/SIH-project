@@ -4,7 +4,7 @@ import { ethers} from 'ethers'
 import {abi} from '../agro'
 import Modal from '../components/Modal'
 import '../Styles/verify.css';
-import bigInt from "big-integer";
+
 
 function Verify() {
     const[contractadd,setcontractadd]=useState();

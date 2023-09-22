@@ -91,8 +91,7 @@ function TimeLine() {
             key={index}
             className="vertical-timeline-element--work"
             date=  <button onClick={()=>setbool2(true)} class="text-white  items-center h-12  w-44 bottom-2.5  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{ backgroundColor: "black", width: "200px" }}>Real-time health of fruits</button>
-            date=<button onClick={()=>setbool2(true)} class="text-white items-center h-12 w-44 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Real-time health of fruits</button>  
-            quantity={qty}
+            
             
             iconStyle={{ background: pendingaddress[index] === '0x0000000000000000000000000000000000000000' ? 'green' : 'red', color: '#fff' }}
             
