@@ -36,6 +36,8 @@ function TimeLine() {
     const interval = setInterval(async () => {
       const response = await axios.get('http://localhost:5000/api1').then((response) => {
         setBackobj(response.data)
+      }).catch((error) => {
+        console.error('Error fetching data:', error);
       });
       
     }, 1000);

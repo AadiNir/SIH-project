@@ -19,7 +19,7 @@ function readJSONFile() {
 
 // Watch for changes to the JSON file
 const a = require('../../Client/src/matlabData.json')
-fs.watch('../../', (event, filename) => {
+fs.watch('../../Client/src/matlabData.json', (event, filename) => {
   if (event === 'change') {
     console.log('File changed:', filename);
     readJSONFile();
