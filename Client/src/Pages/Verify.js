@@ -4,6 +4,7 @@ import { ethers} from 'ethers'
 import {abi} from '../agro'
 import Modal from '../components/Modal'
 import '../Styles/verify.css';
+import bigInt from "big-integer";
 
 function Verify() {
     const[contractadd,setcontractadd]=useState();
@@ -11,6 +12,7 @@ function Verify() {
     const[userid,setuserid]=useState();
     const[inflation,setinflation]=useState();
     const[bool,setbool]=useState(false);
+    const[newprice,setnewprice]= useState();
     useEffect(()=>{
         inContract();
     })
@@ -32,6 +34,8 @@ function Verify() {
     async function toverify(e){
         e.preventDefault();
         try{
+
+
         await contractadd.to_verify(pendingaddress,userid,10);
         setbool(true);
         }
@@ -40,18 +44,25 @@ function Verify() {
             console.log(err);
         }
     }
+    // async function hola(){
+    // const data = await contractadd.get_order(1002);
+    // data.price()
     
+    // }
+    // hola();
 
   return (
     
     <div >
         <Navbar/>
         <form className='form2'>
-        <input className='input-box2' onChange={e=>setpendingadd(e.target.value)} placeholder='Enter the id of the product'/> <br/>
-        <input  className='input-box2' onChange={e=>setuserid(e.target.value)} placeholder='Enter any inflation rate'/><br/>
+        <input className='input-box2' onChange={e=>setpendingadd(e.target.value)} placeholder='Enter the addresss of the vendor'/> <br/>
+        <input  className='input-box2' onChange={e=>setuserid(e.target.value)} placeholder='Enter id of the product'/><br/>
+        <input  className='input-box2' onChange={e=>setnewprice(e.target.value)} placeholder='Enter any inflation rate'/><br/>
+
         <button   className='btn2' onClick={e=>toverify(e)}>click here to verify</button>
-        <Modal open={bool} onclose={()=>setbool(false)} value={'You have successfully verified, Go to timeline page for more information'}/>
         </form>
+        <Modal open={bool} onclose={()=>setbool(false)} value={`You have successfully verified, Go to timeline page for more information`}/>
 
         
 
