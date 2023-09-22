@@ -7,6 +7,8 @@ import { ethers } from 'ethers';
 import { abi } from '../agro';
 import Modal from './Modal'
 import Modal2 from './Modal2';
+import axios from 'axios';
+import matlabData from '../matlabData.json'
 
 function TimeLine() {
   const [signeraddress, setsigneraddress] = useState("You haven't logged in yet");
@@ -25,12 +27,25 @@ function TimeLine() {
   const[namearr,setnamearr]=useState([]);
   const[placearr,setplacearr]  = useState([]);
   const [bool2, setbool2] = useState(false);
-
+  const [backobj,setBackobj] = useState();
 
 
   useEffect(() => {
     iscontract();
+
+    const interval = setInterval(async () => {
+      const response = await axios.get('http://localhost:5000/api1').then((response) => {
+        setBackobj(response.data)
+      }).catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+      
+    }, 1000);
+
+    
   }, []);
+
+console.log(backobj)
 
   async function iscontract() {
     try {
