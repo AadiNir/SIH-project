@@ -18,7 +18,7 @@ function TimeLine() {
   const [pendingaddress, setpendingaddress] = useState([]);
   const [qty, setqty] = useState();
   const [price, setprice] = useState();
-  const [inflation, setinflation] = useState();
+  const [inflation, setinflation] = useState([]);
   const [prodname, setprodname] = useState('');
   const [verifiedaddress, setverifiedaddress] = useState([]);
   const [bool, setbool] = useState(false);
@@ -38,10 +38,10 @@ function TimeLine() {
       await provider.send('eth_requestAccounts', []);
 
       const signer = provider.getSigner();
-      const contractaddress = '0xcD74a47d2c2Ae78047587f45C9a2597c25Ba34b2';
+      const contractaddress = '0x5Abf285424A67e3bA8edC96A21dC20165c5C1E4c';
       setcontract(new ethers.Contract(contractaddress, abi, signer));
 
-      setsigneraddress(signer.address);
+      setsigneraddress(await signer.address);
     } catch (err) {
       console.log(err.reason);
     }
@@ -54,7 +54,7 @@ function TimeLine() {
       setpendingaddress(data.pending_address);
       setqty(data.qty.toString());
       setprice(data.price.toString());
-      setinflation(data.inflation.toString());
+      setinflation(data.inflation);
       setprodname(data.product_name);
       setverifiedaddress(data.verified_address);
       setnamearr(data.names);
@@ -91,6 +91,7 @@ function TimeLine() {
             key={index}
             className="vertical-timeline-element--work"
             date=  <button onClick={()=>setbool2(true)} class="text-white  items-center h-12  w-44 bottom-2.5  hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style={{ backgroundColor: "black", width: "200px" }}>Real-time health of fruits</button>
+            date=<button onClick={()=>setbool2(true)} class="text-white items-center h-12 w-44 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Real-time health of fruits</button>  
             quantity={qty}
             
             iconStyle={{ background: pendingaddress[index] === '0x0000000000000000000000000000000000000000' ? 'green' : 'red', color: '#fff' }}
@@ -102,10 +103,9 @@ function TimeLine() {
             <h4 className="vertical-timeline-element-subtitle">ID: {pendingaddress[index]}</h4>
             <h4 className="vertical-timeline-element-subtitle">Name: {namearr[index]}</h4>
             <h4 className="vertical-timeline-element-subtitle">Place: {placearr[index]}</h4>
-
-
-            <h4 className="vertical-timeline-element-subtitle">Price: {price} rs</h4>
-            <h4 className="vertical-timeline-element-subtitle">Inflation: {inflation}%</h4>
+            <h4 className="vertical-timeline-element-subtitle">Total Price: {price*qty}</h4>
+            <h4 className="vertical-timeline-element-subtitle">Price per Kg: {price} rs</h4>
+            <h4 className="vertical-timeline-element-subtitle">Inflation: {inflation[index]}%</h4>
             
           </VerticalTimelineElement>
           
@@ -115,7 +115,6 @@ function TimeLine() {
       
       <Modal open={bool} onclose={()=>setbool(false)} value={"No Such order has been initiated yet, Try again"}/>
       <Modal2 open={bool2} onclose={()=>setbool2(false)} value={"Hello"}  TempInC={"Ayo"} TempInF={"Ayo"} Gas={"Ayo"} Flame={"Ayo"} Pir={"Ayo"} Ultrasonic={"Ayo"} />
-
 
     </div>
     </div>
