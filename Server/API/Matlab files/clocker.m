@@ -17,13 +17,14 @@ while y == 0
     json = jsonencode(x);
     
     % Open the JSON file for writing
-    fid = fopen('data/matlabData.json', 'w');
+    fid = fopen('D:\python projects\SIH-project-local\Client\src\matlabData.json', 'w');
     if fid == -1
         error('Unable to open the JSON file for writing.');
     end
     
     % Write the JSON data to the file
     fwrite(fid, json, 'char');
+    pause(5);
     
     % Close the file
     fclose(fid);
