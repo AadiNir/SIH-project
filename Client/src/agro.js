@@ -1,5 +1,5 @@
 
-  export const abi= [
+  export const abi=[
     {
       "inputs": [
         {
@@ -13,14 +13,14 @@
           "type": "uint16"
         },
         {
-          "internalType": "uint256",
+          "internalType": "uint16",
           "name": "pricep",
-          "type": "uint256"
+          "type": "uint16"
         },
         {
-          "internalType": "uint256",
+          "internalType": "uint16[]",
           "name": "inflationp",
-          "type": "uint256"
+          "type": "uint16[]"
         },
         {
           "internalType": "string",
@@ -61,9 +61,9 @@
           "type": "uint256"
         },
         {
-          "internalType": "uint256",
+          "internalType": "uint16",
           "name": "new_inflation",
-          "type": "uint256"
+          "type": "uint16"
         }
       ],
       "name": "to_verify",
@@ -75,6 +75,30 @@
       "inputs": [],
       "stateMutability": "nonpayable",
       "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "a",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "idp",
+          "type": "uint256"
+        }
+      ],
+      "name": "get_index",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     },
     {
       "inputs": [
@@ -119,14 +143,14 @@
               "type": "uint16"
             },
             {
-              "internalType": "uint256",
+              "internalType": "uint16",
               "name": "price",
-              "type": "uint256"
+              "type": "uint16"
             },
             {
-              "internalType": "uint256",
+              "internalType": "uint16[]",
               "name": "inflation",
-              "type": "uint256"
+              "type": "uint16[]"
             },
             {
               "internalType": "string",
