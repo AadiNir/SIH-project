@@ -7,6 +7,7 @@ import Modal from '../components/Modal';
 import '../Styles/form.css';
 import "../Styles/form.jpg";
 
+
 function Postdetails() {
     const[signeraddress,setsigneraddress]=useState("You haven't logged in yet");
     const[contract,setcontract]=useState();
@@ -50,6 +51,18 @@ function Postdetails() {
             console.log(err.reason);
         }
     }
+    // const handlefile=()=>{
+    //   let e='allenexcel.xlsx'
+    //   ExcelRenderer(e,(err,response)=>{
+    //     if(err){
+    //       console.log(err);
+    //     }else{
+    //       console.log('success');
+    //     }
+
+    //   })
+    // }
+    // handlefile()
     const add= async (e)=>{
       e.preventDefault();
       try{
@@ -74,6 +87,7 @@ function Postdetails() {
 
 
     }
+
   
   return (
     <div>
@@ -86,7 +100,6 @@ function Postdetails() {
 
     <button   className='btn1' onClick={e=>setq(e)}>+</button>
     <Modal open={bool2} onclose={()=>setbool2(false)} value={`You have added a new Distributor to your chain`}/>
-
 
 
        
