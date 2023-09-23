@@ -26,22 +26,24 @@ function TimeLine() {
   const [bool, setbool] = useState(false);
   const[namearr,setnamearr]=useState([]);
   const[placearr,setplacearr]  = useState([]);
-  const [bool2, setbool2] = useState(false);
   const [backobj,setBackobj] = useState();
+  const[bool2, setbool2] = useState(false);
+  const[decay,setdecay]  = useState([]);
+  
 
 
   useEffect(() => {
     iscontract();
-
+    
     const interval = setInterval(async () => {
       const response = await axios.get('http://localhost:5000/api1').then((response) => {
-        setBackobj(response.data)
+        setBackobj(response)
       }).catch((error) => {
         console.error('Error fetching data:', error);
       });
       
     }, 1000);
-
+      console.log(backobj.data)
     
   }, []);
 
