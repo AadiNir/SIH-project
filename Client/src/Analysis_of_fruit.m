@@ -96,8 +96,8 @@ end
 totalPixels = numel(binaryImage);
 percentageRotten = (sum/ totalPixels) * 100;
 % Display the original image with detected rotten fruit
-figure(2)
-imshow("rotten apple.jpg");
+%figure(2)
+%imshow("rotten apple.jpg");
 fprintf('Percentage of rotten area: %.2f%%\n', percentageRotten);
 title(['Detected Rotten Areas: ' num2str(rottenCount)] );
 
@@ -128,11 +128,11 @@ binaryImage = grayImage < (otsu_level*255);
 mask=zeros(size(grayImage))
 mask(10:end-10,10:end-10)=1
 contour=activecontour(grayImage,mask,300)
-figure(1)
+%figure(1)
 finalimage=contour-binaryImage;
 imshow(finalimage);
 %figure(3)
-%imshow(contour)
+imshow(contour)
 % Perform morphological operations to clean up the binary image
 binaryImage = imopen(binaryImage, strel('disk', 5));
 binaryImage= imclose(binaryImage, strel('disk', 15));
@@ -167,7 +167,7 @@ totalPixels = numel(binaryImage);
 percentageRotten = (sum/ totalPixels) * 100;
 % Display the original image with detected rotten fruit
 figure(2)
-imshow("fresh apple.jpg");
+%imshow("fresh apple.jpg");
 fprintf('Percentage of rotten area: %.2f%%\n', percentageRotten);
 title(['Detected Rotten Areas: ' num2str(rottenCount)] );
 
@@ -176,8 +176,21 @@ Rotten_areas=num2str(rottenCount);
 Percentage=num2str(percentageRotten);
 
 % Define a JavaScript object to store the percentage of decay
-data = struct('percentageRotten', percentageRotten);
+data = struct('percentageRotten', percentageRotten, 'rottenAreas', Rotten_areas);
 
 % Convert the MATLAB structure data into a JSON string
 json = jsonencode(data);
+
+    % Open the JSON file for writing
+    fid = fopen('D:\python projects\SIH-project-local\Client\src\matlabData.json', 'w');
+    if fid == -1
+        error('Unable to open the JSON file for writing.');
+    end
+    
+    % Write the JSON data to the file
+    fwrite(fid, json, 'char');
+    pause(5);
+    
+    % Close the file
+    fclose(fid);
 

@@ -96,7 +96,7 @@ function Postdetails() {
     <input className='input-box' type='text' placeholder="Enter all of your distribution address in the format" onChange={e=>{setpendingadd(e.target.value)}}></input><br/>
     <input className='input-box' type='text' placeholder='Enter the PlaceName'  onChange={e=>{setplaces(e.target.value)}}></input><br/>
     <input className='input-box' type='text' placeholder='Enter the Name of the vendor'  onChange={e=>{setname(e.target.value)}}></input><br/>
-    <input  className='input-box' type='number' placeholder='Enter the inflactuation percentage'  onChange={e=>{setinflation(e.target.value)}}></input><br/><br/>
+    <input  className='input-box' type='number' placeholder='Enter the inflation percentage'  onChange={e=>{setinflation(e.target.value)}}></input><br/><br/>
 
     <button   className='btn1' onClick={e=>setq(e)}>+</button>
     <Modal open={bool2} onclose={()=>setbool2(false)} value={`You have added a new Distributor to your chain`}/>
