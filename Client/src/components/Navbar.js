@@ -21,10 +21,11 @@ function Navbar() {
         try{
         const  provider =  new ethers.providers.Web3Provider(window.ethereum)
         await provider.send("eth_requestAccounts", []);
+                await provider.send("eth_requestAccounts", []);
 
 
         const signer = provider.getSigner();
-        const contractaddress =  '0x9f14C0F90cF75bF93B682913e64F40Ae9B2d3d85'
+        const contractaddress =  '0x5FbDB2315678afecb367f032d93F642f64180aa3'
         const contract = new ethers.Contract(contractaddress,abi,signer)
         setsigneraddress(await signer.getAddress());
         }catch(err){
@@ -40,7 +41,7 @@ function Navbar() {
                 <a href="/#">About us</a>
                 {/* <a href="/Services">Services</a> */}
                 <Link to = "/Services">Services</Link>
-                <Link to = "/Login">Details</Link>
+                <Link to = "/Login">Order</Link>
                 <Link to = "/Verify">Verify</Link>
 
 

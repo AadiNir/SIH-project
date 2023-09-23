@@ -28,6 +28,8 @@ function TimeLine() {
   const[placearr,setplacearr]  = useState([]);
   const [bool2, setbool2] = useState(false);
   const [backobj,setBackobj] = useState();
+  const [decayPercent,setdecayPercent] = useState();
+  const [rotArea,setrotArea]  = useState();
 
 
   useEffect(() => {
@@ -36,16 +38,18 @@ function TimeLine() {
     const interval = setInterval(async () => {
       const response = await axios.get('http://localhost:5000/api1').then((response) => {
         setBackobj(response.data)
+        setdecayPercent(response.data.percentageRotten)
+        setrotArea(response.data.rottenAreas)
       }).catch((error) => {
         console.error('Error fetching data:', error);
       });
       
-    }, 1000);
+    }, 10000);
 
     
   }, []);
 
-// console.log(backobj)
+console.log(backobj)
 
   async function iscontract() {
     try {
@@ -128,7 +132,7 @@ function TimeLine() {
       </VerticalTimeline>
       
       <Modal open={bool} onclose={()=>setbool(false)} value={"No Such order has been initiated yet, Try again"}/>
-      <Modal2 open={bool2} onclose={()=>setbool2(false)} value={"Hello"}  TempInC={"Ayo"} TempInF={"Ayo"} Gas={"Ayo"} Flame={"Ayo"} Pir={"Ayo"} Ultrasonic={"Ayo"} />
+      <Modal2 open={bool2} onclose={()=>setbool2(false)} value={"Hello"}  TempInC={"Ayo"} TempInF={"Ayo"} Gas={"Ayo"} Flame={"Ayo"} Pir={"Ayo"} Ultrasonic={"Ayo"} decayPercent={decayPercent} rotArea={rotArea}/>
 
     </div>
     </div>
