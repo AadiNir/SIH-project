@@ -51,6 +51,8 @@ function TimeLine() {
 
 console.log(backobj)
 
+
+
   async function iscontract() {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -83,6 +85,7 @@ console.log(backobj)
       setbool(true);
     }
   }
+
 
 
   return (
