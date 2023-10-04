@@ -24,7 +24,7 @@ function Modal2({open,onclose,decayPercent,rotArea,children}) {
      setflamesensor(detailsn.data.field6);
      setultrasonic(detailsn.data.field7);
  
-    
+    console.log(humidity,tempc,tempf,gassensor,pirsensor,flamesensor,ultrasonic);
   },15000)
   },[])
   
