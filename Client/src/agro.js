@@ -8,6 +8,11 @@
           "type": "address[]"
         },
         {
+          "internalType": "string[]",
+          "name": "emailp",
+          "type": "string[]"
+        },
+        {
           "internalType": "uint16",
           "name": "qtyp",
           "type": "uint16"
@@ -41,6 +46,11 @@
           "internalType": "string[]",
           "name": "namep",
           "type": "string[]"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "timestampp",
+          "type": "uint256[]"
         }
       ],
       "name": "initiate_order",
@@ -129,6 +139,11 @@
             },
             {
               "internalType": "string[]",
+              "name": "email",
+              "type": "string[]"
+            },
+            {
+              "internalType": "string[]",
               "name": "names",
               "type": "string[]"
             },
@@ -163,9 +178,19 @@
               "type": "address[]"
             },
             {
-              "internalType": "uint256",
+              "internalType": "string",
+              "name": "latestemailid",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "latestname",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256[]",
               "name": "timestamp",
-              "type": "uint256"
+              "type": "uint256[]"
             }
           ],
           "internalType": "struct agro.item",
@@ -179,6 +204,25 @@
     {
       "inputs": [],
       "name": "getid",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "order_id",
+          "type": "uint256"
+        }
+      ],
+      "name": "getlength",
       "outputs": [
         {
           "internalType": "uint256",

@@ -19,6 +19,8 @@ function Postdetails() {
     const[name,setname]=useState();
     const[namearr,setnamearr]=useState([]);
 
+    const[emailaddress,setemailaddress]=useState();
+    const[emailaddressarr,setemailaddressarr]=useState([]);
 
 
     const[quandity,setquanidty]= useState();
@@ -41,7 +43,7 @@ function Postdetails() {
         await provider.send("eth_requestAccounts", []);
 
         const signer =  provider.getSigner();
-        const contractaddress =  '0x5Abf285424A67e3bA8edC96A21dC20165c5C1E4c'
+        const contractaddress =  '0xa6e141d56D85d8EF9540Ead769a6a53D3CeE7Dc5'
         setcontract(new ethers.Contract(contractaddress,abi,signer))
         console.log(prodnam)
 
@@ -66,7 +68,7 @@ function Postdetails() {
     const add= async (e)=>{
       e.preventDefault();
       try{
-        await contract.initiate_order(pending,quandity,price,inflationarr,prodnam,[],placesarray,namearr);
+        await contract.initiate_order(pending,emailaddressarr,quandity,price,inflationarr,prodnam,[],placesarray,namearr,[Date.now()]);
         setid(await contract.getid());
         setbool(true);
       }catch(err){
@@ -80,13 +82,16 @@ function Postdetails() {
       placesarray.push(places);
       inflationarr.push(inflation);
       namearr.push(name);
+      emailaddressarr.push(emailaddress);
       console.log(pending);
       console.log(placesarray);
       console.log(namearr);
+      console.log(emailaddressarr);
       setbool2(true)
 
 
     }
+
 
   
   return (
@@ -97,6 +102,10 @@ function Postdetails() {
     <input className='input-box' type='text' placeholder='Enter the PlaceName'  onChange={e=>{setplaces(e.target.value)}}></input><br/>
     <input className='input-box' type='text' placeholder='Enter the Name of the vendor'  onChange={e=>{setname(e.target.value)}}></input><br/>
     <input  className='input-box' type='number' placeholder='Enter the inflation percentage'  onChange={e=>{setinflation(e.target.value)}}></input><br/><br/>
+    <input  className='input-box' type='text' placeholder='Enter the emailaddress'  onChange={e=>{setemailaddress(e.target.value)}}></input><br/><br/>
+
+
+
 
     <button   className='btn1' onClick={e=>setq(e)}>+</button>
     <Modal open={bool2} onclose={()=>setbool2(false)} value={`You have added a new Distributor to your chain`}/>
@@ -106,6 +115,7 @@ function Postdetails() {
      
 
       <input className='input-box' type='number' placeholder='Enter the quantity in terms of Kg' onChange={e=>{setquanidty(e.target.value)}}></input><br/><br/>
+
       
       <input className='input-box' type='number' placeholder='Enter the price in terms of Rs'  onChange={e=>{setprice(e.target.value)}}></input><br/><br/>
       <input className='input-box' type='text' placeholder='Enter the Product Name'  onChange={e=>{setprodname(e.target.value)}}></input><br/><br/>

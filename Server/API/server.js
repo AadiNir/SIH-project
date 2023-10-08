@@ -69,13 +69,13 @@ app.post('/send-courier-message', async (req, res) => {
     const { requestId } = await courier.send({
       message: {
         to: {
-          email: "agrochain.sih@gmail.com",
+          email: req.body.email,
         },
         template: "FT0VS9003CMDN9MDZVE4VTVD8Q57",
         data: {
-          username: "AgroChain",
-          param_name: "Temperature",
-          param_value: "30",
+          username: req.body.name,
+          param_name: req.body.valname,
+          param_value: req.body.val,
         },
       },
     });

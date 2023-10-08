@@ -9,6 +9,7 @@ import Modal from './Modal'
 import Modal2 from './Modal2';
 import axios from 'axios';
 import matlabData from '../matlabData.json'
+import moment from 'moment'
 
 function TimeLine() {
   const [signeraddress, setsigneraddress] = useState("You haven't logged in yet");
@@ -30,6 +31,7 @@ function TimeLine() {
   const [backobj,setBackobj] = useState();
   const [decayPercent,setdecayPercent] = useState();
   const [rotArea,setrotArea]  = useState();
+  const [timestampa,settimestampa]=useState([]);
 
 
   useEffect(() => {
@@ -59,7 +61,7 @@ console.log(backobj)
       await provider.send('eth_requestAccounts', []);
 
       const signer = provider.getSigner();
-      const contractaddress = '0x5Abf285424A67e3bA8edC96A21dC20165c5C1E4c';
+      const contractaddress = '0xa6e141d56D85d8EF9540Ead769a6a53D3CeE7Dc5';
       setcontract(new ethers.Contract(contractaddress, abi, signer));
 
       setsigneraddress(await signer.address);
@@ -80,11 +82,23 @@ console.log(backobj)
       setverifiedaddress(data.verified_address);
       setnamearr(data.names);
       setplacearr(data.places)
+      settimestampa(data.timestamp);
+      // console.log(timestampa[0].toString());
+       
+
+      
+    
     } catch (err) {
       console.log(err);
       setbool(true);
     }
   }
+function gettime(timestampp){
+  const date = moment.unix(timestampp);
+
+  return date._d.toString();
+}
+
 
 
 
@@ -127,6 +141,12 @@ console.log(backobj)
             <h4 className="vertical-timeline-element-subtitle">Total Price: {price*qty}</h4>
             <h4 className="vertical-timeline-element-subtitle">Price per Kg: {price} rs</h4>
             <h4 className="vertical-timeline-element-subtitle">Inflation: {inflation[index]}%</h4>
+            {(timestampa[index+1]!=undefined)?<h4 className="vertical-timeline-element-subtitle">Timestamp: {gettime(timestampa[1].toString())}</h4>:<div>order has not been verified yet</div>}
+            
+
+
+            
+            
             
           </VerticalTimelineElement>
           
@@ -135,7 +155,7 @@ console.log(backobj)
       </VerticalTimeline>
       
       <Modal open={bool} onclose={()=>setbool(false)} value={"No Such order has been initiated yet, Try again"}/>
-      <Modal2 open={bool2} onclose={()=>setbool2(false)} value={"Hello"}  TempInC={"Ayo"} TempInF={"Ayo"} Gas={"Ayo"} Flame={"Ayo"} Pir={"Ayo"} Ultrasonic={"Ayo"} decayPercent={decayPercent} rotArea={rotArea}/>
+      <Modal2 open={bool2} onclose={()=>setbool2(false)} value={"Hello"} userid={searchid} TempInC={"Ayo"} TempInF={"Ayo"} Gas={"Ayo"} Flame={"Ayo"} Pir={"Ayo"} Ultrasonic={"Ayo"} decayPercent={decayPercent} rotArea={rotArea}/>
 
     </div>
     </div>

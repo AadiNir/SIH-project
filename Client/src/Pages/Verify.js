@@ -24,7 +24,7 @@ function Verify() {
         const provider =  new ethers.providers.Web3Provider(window.ethereum);
         await provider.send("eth_requestAccounts", []);
 
-        const contract_address= '0x5Abf285424A67e3bA8edC96A21dC20165c5C1E4c';
+        const contract_address= '0xa6e141d56D85d8EF9540Ead769a6a53D3CeE7Dc5';
         const signer =  provider.getSigner();
         const contract = new ethers.Contract(contract_address,abi,signer);
         setcontractadd(contract);
