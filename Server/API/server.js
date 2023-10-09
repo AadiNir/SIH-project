@@ -100,6 +100,7 @@ function readJSONFile() {
   }
 }
 
+
 // Watch for changes to the JSON file
 const a = require('../../Client/src/matlabData.json')
 fs.watch('../../Client/src/matlabData.json', (event, filename) => {
@@ -117,6 +118,19 @@ app.get('/api1', (req, res) => {
     res.status(500).json({ error: 'Unable to fetch data.' });
   }
 });
+
+app.get('/readval',(req,res) =>{
+  var fs = require('fs');
+
+  var data = {}
+  data.table = []
+
+      fs.writeFile ("readvalues.json", JSON.stringify(data), function(err) {
+        if (err) throw err;
+          console.log('complete');
+      }
+      );
+})
 
 // Start the Express server
 
