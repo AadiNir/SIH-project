@@ -45,6 +45,8 @@ function Modal2({ open, onclose, decayPercent, rotArea, userid, children }) {
  
 
 
+      
+
       // Check if tempc crosses the threshold and if at least 10 minutes have passed since the last alert
       if (tempc > 35 && (!lastAlertTime || Date.now() - lastAlertTime >= 100000)) {
         await alert("temperature", tempc.toString(),userid);
