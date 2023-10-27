@@ -70,8 +70,11 @@ function TimeLine() {
           "id":searchid,
           "value":detailsn.data.field3
         }
+        const header = {
+          "Content-type":"application/json"
+        }
         try{
-        const response = await axios.put('http://localhost:5000/db/upd/field3',body);
+        const response = await axios.put('http://localhost:5000/db/upd/field3',body,header);
          }
       catch(err){
 
@@ -81,8 +84,11 @@ function TimeLine() {
           "id":searchid,
           "value":detailsn.data.field4
         }
+        const header = {
+          "Content-type":"application/json"
+        }
         try{
-        const response = await axios.put('http://localhost:5000/db/upd/field4',body);
+        const response = await axios.put('http://localhost:5000/db/upd/field4',body,header);
            }  catch(err){
 
            }    }  
@@ -91,8 +97,11 @@ function TimeLine() {
           "id":searchid,
           "value":detailsn.data.field5
         }
+        const header = {
+          "Content-type":"application/json"
+        }
         try{
-        const response = await axios.put('http://localhost:5000/db/upd/field5',body);
+        const response = await axios.put('http://localhost:5000/db/upd/field5',body,header);
           }
         catch(err){
 
@@ -102,8 +111,11 @@ function TimeLine() {
           "id":searchid,
           "value":detailsn.data.field6
         }
+        const header = {
+          "Content-type":"application/json"
+        }
         try{
-        const response = await axios.put('http://localhost:5000/db/upd/field6',body);
+        const response = await axios.put('http://localhost:5000/db/upd/field6',body,header);
         }catch(err){
 
         }   } 
@@ -112,8 +124,11 @@ function TimeLine() {
           "id":searchid,
           "value":detailsn.data.field7
         }
+        const header = {
+          "Content-type":"application/json"
+        }
         try{
-        const response = await axios.put('http://localhost:5000/db/upd/field7',body);
+        const response = await axios.put('http://localhost:5000/db/upd/field7',body,header);
          }
         catch(err){
 
