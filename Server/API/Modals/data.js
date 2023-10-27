@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const Dataschema = new Schema(
     {
         productid:{
-            type:Number,
+            type:String,
             required: true
         },
         field2:{

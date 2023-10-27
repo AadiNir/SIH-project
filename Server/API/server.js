@@ -156,6 +156,14 @@ app.post('/db',async (req,res)=>{
     console.log(err);
   }
 })
+app.get('/db',async(req,res)=>{
+  try{
+    const log = await Data.findOne({productid:req.body.id});
+    res.json(log);
+  }catch(err){
+    console.log(err);
+  }
+})
 app.put('/db/upd/:field_id',async(req,res)=>{
   try{
     const user = await Data.findOne({productid:req.body.id});

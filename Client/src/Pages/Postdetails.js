@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Modal from '../components/Modal';
 import '../Styles/form.css';
 import "../Styles/form.jpg";
+import axios from 'axios';
 
 
 function Postdetails() {
@@ -68,9 +69,31 @@ function Postdetails() {
     const add= async (e)=>{
       e.preventDefault();
       try{
+        const temp=await contract.getid();
+        console.log(temp.toString())
         await contract.initiate_order(pending,emailaddressarr,quandity,price,inflationarr,prodnam,[],placesarray,namearr,[Date.now()]);
-        setid(await contract.getid());
+        
+        const body = {
+          "id":temp.toString(),
+          "field2": "22",
+          "field3": "20",
+          "field4": "20",
+          "field5": "20",
+          "field6": "20",
+          "field7": "20",
+
+        }
+        const headers = {
+          "Content-type":"application/json"
+        }
+        try{
+        const response = await axios.post("http://localhost:5000/db",body,headers);
+        }catch(err){
+          console.log(err);
+        }
+        setid(temp);
         setbool(true);
+      
       }catch(err){
         console.log(err);
       }
