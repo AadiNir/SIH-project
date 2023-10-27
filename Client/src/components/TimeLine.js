@@ -35,6 +35,7 @@ function TimeLine() {
 
 
   useEffect(() => {
+
     iscontract();
 
     const interval = setInterval(async () => {
@@ -45,13 +46,89 @@ function TimeLine() {
       }).catch((error) => {
         console.error('Error fetching data:', error);
       });
+
+      let detailsn = await axios.get('https://api.thingspeak.com/channels/2276275/feeds/last.json');
+      let alld = await axios.get('https://api.thingspeak.com/channels/2276275/feeds.json');
+      console.log(detailsn);
+       if(detailsn.data.field2!=null){
+        
+        const body = {
+          "id":searchid,
+          "value":detailsn.data.field2
+        }
+        const header = {
+          "Content-type":"application/json"
+        }
+        try{
+        const response = await axios.put('http://localhost:5000/db/upd/field2',body,header);
+        console.log(response);
+
+        }catch(err){
+          console.log(err);
+          
+        }
+      }  
+      else if(detailsn.data.field3!=null){
+        const body = {
+          "id":searchid,
+          "value":detailsn.data.field3
+        }
+        try{
+        const response = await axios.put('http://localhost:5000/db/upd/field3',body);
+        console.log(response); }
+      catch(err){
+
+      }     } 
+      else if(detailsn.data.field4!=null){
+        const body = {
+          "id":searchid,
+          "value":detailsn.data.field4
+        }
+        try{
+        const response = await axios.put('http://localhost:5000/db/upd/field4',body);
+        console.log(response); 
+           }  catch(err){
+
+           }    }  
+      else if(detailsn.data.field5!=null){
+        const body = {
+          "id":searchid,
+          "value":detailsn.data.field5
+        }
+        try{
+        const response = await axios.put('http://localhost:5000/db/upd/field5',body);
+        console.log(response);  }
+        catch(err){
+
+        }     } 
+      else if(detailsn.data.field6!=null){
+        const body = {
+          "id":searchid,
+          "value":detailsn.data.field6
+        }
+        try{
+        const response = await axios.put('http://localhost:5000/db/upd/field6',body);
+        console.log(response);    
+        }catch(err){
+
+        }   } 
+      else if(detailsn.data.field7!=null){
+        const body = {
+          "id":searchid,
+          "value":detailsn.data.field7
+        }
+        try{
+        const response = await axios.put('http://localhost:5000/db/upd/field7',body);
+        console.log(response);  }
+        catch(err){
+
+        }     }       
       
-    }, 10000);
+    }, 15000);
 
     
   }, []);
 
-console.log(backobj)
 
 
 

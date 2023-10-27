@@ -2,7 +2,10 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 const port = 5000;
+const Data = require('./Modals/data')
+
 const cors = require('cors');
+const connectdb = require('./config/db');
 const { CourierClient } = require("@trycourier/courier");
 const courier = CourierClient({ authorizationToken: "pk_prod_6SK6BV4FM1MAVEGCKXAH95TGPWNG" });
 
@@ -120,9 +123,61 @@ app.get('/api1', (req, res) => {
 
 // Start the Express server
 
+app.post('/db',async (req,res)=>{
+  try{
+    const newpost = {
+      productid:req.body.id,
+      field2: req.body.field2,
+      field3: req.body.field3,
+      field4: req.body.field4,
+      field5: req.body.field5,
+      field6: req.body.field6,
+      field7: req.body.field7
+    }
+    const postemp = new Data(newpost);
+    await postemp.save();
+    res.json(postemp);
+
+  }catch(err){
+    console.log(err);
+  }
+})
+app.put('/db/upd/:field_id',async(req,res)=>{
+  try{
+    const user = await Data.findOne({productid:req.body.id});
+    const field = req.params.field_id;
+    console.log(field)
+    if('field2'===field){
+      user.field2=req.body.value;
+    }
+    if('field3'===field){
+      user.field3=req.body.value;
+    } 
+    if('field4'===field){
+      user.field4=req.body.value;
+    } 
+    if('field5'===field){
+      user.field5=req.body.value;
+    }
+     if('field6'===field){
+      user.field6=req.body.value;
+    } 
+    if('field7'===field){
+      user.field7=req.body.value;
+    }
+    await user.save();
+    res.json(user);
+
+  }
+  catch(err){
+    console.log(err);
+  }
+})
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+connectdb();
 
 // Read the JSON file on startup
 readJSONFile();

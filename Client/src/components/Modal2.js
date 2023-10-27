@@ -21,16 +21,29 @@ function Modal2({ open, onclose, decayPercent, rotArea, userid, children }) {
     iscontract();
 
     const interval = setInterval(async () => {
-      let detailsn = await axios.get('https://api.thingspeak.com/channels/2276275/feeds/last.json');
-      let alld = await axios.get('https://api.thingspeak.com/channels/2276275/feeds.json');
-      console.log(alld.data.feeds.length);
+      // let detailsn = await axios.get('https://api.thingspeak.com/channels/2276275/feeds/last.json');
+      // let alld = await axios.get('https://api.thingspeak.com/channels/2276275/feeds.json');
+      // console.log(detailsn.data.field1)
+      //  if(detailsn.data.field2!=null){
 
-      settempc(detailsn.data.field2);
-      settempf(detailsn.data.field3);
-      setgassensor(detailsn.data.field4);
-      setpirsensor(detailsn.data.field5);
-      setflamesensor(detailsn.data.field6);
-      setultrasonic(detailsn.data.field7);
+      // }  
+      // else if(detailsn.data.field3!=null){
+      //   settempf(detailsn.data.field3);
+      // } 
+      // else if(detailsn.data.field4!=null){
+      //   setgassensor(detailsn.data.field4);
+      // }  
+      // else if(detailsn.data.field5!=null){
+      //   setpirsensor(detailsn.data.field5);
+      // } 
+      // else if(detailsn.data.field6!=null){
+      //   setflamesensor(detailsn.data.field6);
+      // } 
+      // else if(detailsn.data.field7!=null){
+      //   setultrasonic(detailsn.data.field7);
+      // }                  
+ 
+
 
       // Check if tempc crosses the threshold and if at least 10 minutes have passed since the last alert
       if (tempc > 35 && (!lastAlertTime || Date.now() - lastAlertTime >= 100000)) {
