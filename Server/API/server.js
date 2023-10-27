@@ -158,7 +158,7 @@ app.post('/db',async (req,res)=>{
 })
 app.get('/db',async(req,res)=>{
   try{
-    const log = await Data.findOne({productid:req.body.id});
+    const log = await Data.findOne({productid:req.query.id });
     res.json(log);
   }catch(err){
     console.log(err);
@@ -168,7 +168,6 @@ app.put('/db/upd/:field_id',async(req,res)=>{
   try{
     const user = await Data.findOne({productid:req.body.id});
     const field = req.params.field_id;
-    console.log(field)
     if('field2'===field){
       user.field2=req.body.value;
     }
@@ -192,7 +191,6 @@ app.put('/db/upd/:field_id',async(req,res)=>{
 
   }
   catch(err){
-    console.log(err);
   }
 })
 

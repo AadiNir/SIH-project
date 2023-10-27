@@ -48,12 +48,11 @@ function TimeLine() {
       });
 
       let detailsn = await axios.get('https://api.thingspeak.com/channels/2276275/feeds/last.json');
-      let alld = await axios.get('https://api.thingspeak.com/channels/2276275/feeds.json');
-      console.log(detailsn);
-       if(detailsn.data.field2!=null){
+      // let alld = await axios.get('https://api.thingspeak.com/channels/2276275/feeds.json');
+       if(detailsn.data.field2!=null && searchid!=null){
         
         const body = {
-          "id":searchid,
+          "id":searchid.toString(),
           "value":detailsn.data.field2
         }
         const header = {
@@ -61,10 +60,8 @@ function TimeLine() {
         }
         try{
         const response = await axios.put('http://localhost:5000/db/upd/field2',body,header);
-        console.log(response);
 
         }catch(err){
-          console.log(err);
           
         }
       }  
@@ -75,7 +72,7 @@ function TimeLine() {
         }
         try{
         const response = await axios.put('http://localhost:5000/db/upd/field3',body);
-        console.log(response); }
+         }
       catch(err){
 
       }     } 
@@ -86,7 +83,6 @@ function TimeLine() {
         }
         try{
         const response = await axios.put('http://localhost:5000/db/upd/field4',body);
-        console.log(response); 
            }  catch(err){
 
            }    }  
@@ -97,7 +93,7 @@ function TimeLine() {
         }
         try{
         const response = await axios.put('http://localhost:5000/db/upd/field5',body);
-        console.log(response);  }
+          }
         catch(err){
 
         }     } 
@@ -108,7 +104,6 @@ function TimeLine() {
         }
         try{
         const response = await axios.put('http://localhost:5000/db/upd/field6',body);
-        console.log(response);    
         }catch(err){
 
         }   } 
@@ -119,12 +114,12 @@ function TimeLine() {
         }
         try{
         const response = await axios.put('http://localhost:5000/db/upd/field7',body);
-        console.log(response);  }
+         }
         catch(err){
 
         }     }       
       
-    }, 15000);
+    }, 1000);
 
     
   }, []);
@@ -181,8 +176,7 @@ function gettime(timestampp){
 
   return (
     <div className="timeline">
-    {console.log(namearr)}
-    <div class='h-screen'>
+\    <div class='h-screen'>
     <div class="flex items-center justify-center relative">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             

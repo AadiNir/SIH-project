@@ -41,8 +41,9 @@ function Modal2({ open, onclose, decayPercent, rotArea, userid, children }) {
       // } 
       // else if(detailsn.data.field7!=null){
       //   setultrasonic(detailsn.data.field7);
-      // }                  
- 
+      // }   
+
+//  console.log(userid);
 
 
       
@@ -53,7 +54,7 @@ function Modal2({ open, onclose, decayPercent, rotArea, userid, children }) {
         setLastAlertTime(Date.now()); // Update the last alert time
       }
 
-    }, 10000);
+    }, 1000);
 
     return () => clearInterval(interval); // Clean up the interval on unmount
   }, [lastAlertTime]); // Include lastAlertTime in the dependency array
@@ -96,7 +97,36 @@ function Modal2({ open, onclose, decayPercent, rotArea, userid, children }) {
       console.log(err);
     }
   }
+  async function retrieve() {
+    if (userid !== undefined) {
+      const body = {
+        id: userid.toString(),
+      };
+      const header = {
+        "Content-type": "application/json",
+      };
+  
+      try {
+        const response = await axios.get('http://localhost:5000/db', {
+          params: body,
+          headers: header,
+        });
+        const x = response.data; // Access response data
+        settempc(x.field2);
+        settempf(x.field3);
+        setgassensor(x.field4);
+        setpirsensor(x.field5);
+        setflamesensor(x.field6);
+        setultrasonic(x.field7);
 
+
+      } catch (err) {
+      }
+    }
+  }
+   
+
+retrieve();
   return (
     <div>
       <div onClick={onclose} className={`fixed inset-0 justify-center items-center transition-colors ${open ? "visible bg-black/20" : "invisible"} `}>
