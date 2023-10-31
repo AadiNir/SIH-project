@@ -49,6 +49,7 @@ function TimeLine() {
 
       let detailsn = await axios.get('https://api.thingspeak.com/channels/2276275/feeds/last.json');
       // let alld = await axios.get('https://api.thingspeak.com/channels/2276275/feeds.json');
+      console.log(detailsn);
        if(detailsn.data.field2!=null && searchid!=null){
         
         const body = {
@@ -134,7 +135,7 @@ function TimeLine() {
 
         }     }       
       
-    }, 100);
+    }, 1000);
 
     
   }, []);

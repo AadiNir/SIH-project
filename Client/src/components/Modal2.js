@@ -121,6 +121,7 @@ function Modal2({ open, onclose, decayPercent, rotArea, userid, children }) {
 
 
       } catch (err) {
+        console.log(err);
       }
     }
   }
